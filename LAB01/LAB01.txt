@@ -1,0 +1,24 @@
+1.	Cuando se genera el archivo obj a partir del archivo “.asm” ¿Qué información nos muestra en consola y qué significa?
+
+Este archivo contiene el formato intermedio del programa, únicamente muestra la versión de Turbo Link y  versión,
+posteriormente genera el archivo .exe qe contiene el programa.
+
+2.	¿En qué punto se crea el archivo ejecutable?
+
+Al ejecutar el comando tlink (nombre del archivo .obj), por lo tanto, es el último paso antes de generar el código ejecutable.
+
+3.	¿Cuál es la interrupción utilizada para imprimir una cadena de caracteres?
+
+INT 21H Función 09H
+
+4.	¿Cuál es la interrupción para imprimir solamente un caracter?
+
+INT 21H Función 01H
+
+5.	¿Qué registros entran en juego al ejecutar una interrupción de la serie 21h?
+
+- DL
+- AH
+- DS
+- DX
+

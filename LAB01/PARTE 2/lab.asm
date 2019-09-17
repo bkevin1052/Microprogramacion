@@ -1,0 +1,17 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+MAIN PROC 
+    MOV AH,2
+    MOV CX,0      ;CANTIDAD DE CORRIDAS
+    MOV DL,150      ;CODIGO ASCII
+ 
+    
+    INT 21H   ;MUESTRA EL CARACTER
+  
+    MOV AH,4CH  ;DOS retorno
+    INT 21H     ;DOS salida
+    
+    MAIN ENDP
+END MAIN

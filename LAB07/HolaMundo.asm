@@ -18,16 +18,16 @@ cdMaxSize  EQU 11
   iNum      dd ?
  
 .DATA
-  szTxtNum1 db "Ingrese primer numero: ", 0
-  szTxtNum2 db "Ingrese segundo numero: ", 0
-  szTxtSum  db "Suma: ", 0
-  szTxtRes  db "Resta: ", 0
+  szTxtNum1 db " Ingrese primer numero: ",0,13
+  szTxtNum2 db " Ingrese segundo numero: ",0,13
+  szTxtSum  db " Suma: ",0,13
+  szTxtRes  db " Resta: ", 0,13
   number1   DD 442
   number2   dd 22
   msg       db cdMaxSize dup(0)
-  iguales 	db "Son iguales",0
-  mayor 	db "Es mayor",0
-  menor 	db "Es menor",0
+  iguales 	db " Son iguales ",0,13
+  mayores 	db " Es mayor ",0,13
+  menores 	db " Es menor ",0,13
  
 .CODE
 
@@ -104,7 +104,7 @@ cdMaxSize  EQU 11
 	
 	; Convertir a numeros y Restar
 	
-	MOV        eax, offset szNumber1
+	  MOV        eax, offset szNumber1
     CALL       str2num
     MOV        ebx, eax
    
@@ -120,7 +120,38 @@ cdMaxSize  EQU 11
     INVOKE     StdOut, eax
 
 	; Mostrar si es mayor, menor o igual
-    INVOKE     ExitProcess, 0
+
+	  MOV        eax, offset szNumber1
+    CALL       str2num
+    MOV        ebx, eax
+   
+    MOV        eax, offset szNumber2
+    CALL       str2num
 	
+    CMP        ebx, eax
+    JE         @igual
+    JG         @mayor
+    JL         @menor
+
+    @igual:
+    INVOKE     StdOut, offset iguales
+    JMP        @salir
+
+    @mayor:
+    INVOKE     StdOut, offset mayores
+    MOV        eax, ebx
+    CALL       num2str
+    INVOKE     StdOut, eax
+    JMP        @salir
+
+    @menor:
+    INVOKE     StdOut, offset menores
+    MOV        eax, ebx
+    CALL       num2str
+    INVOKE     StdOut, eax
+    JMP        @salir
+
+    @salir:
+    INVOKE     ExitProcess, 0
  
 END start

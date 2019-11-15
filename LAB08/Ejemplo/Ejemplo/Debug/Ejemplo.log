@@ -1,0 +1,3 @@
+﻿  Assembling Ejemplo.asm...
+\masm32\include\masm32rt.inc(33): warning A4011: multiple .MODEL directives found : .MODEL ignored
+  Ejemplo.vcxproj -> C:\Users\kevin\Desktop\Ejemplo\Debug\Ejemplo.exe
